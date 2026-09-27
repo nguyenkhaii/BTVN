@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Units</title>
+    <style>
+      .percent {
+        width: 50%;
+        height: 200px;
+        background-color: red;
+      }
+      html {
+        font-size: 20px;
+      }
+      .rem {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- px: pixels : đơn vị cố định, không bị thay đổi -->
+    <!-- % dựa vào thẻ chứa nó
+    50%: kích thước của trình duyệt 
+
+    rem: phụ thuộc vào thẻ html
+    -->
+    <div class="aaaaa">
+      <div class="unit-rem">
+        <p>Units Rem</p>
+      </div>
+    </div>
+    <p class="rem">Units Rem</p>
+    <div class="pixels"></div>
+    <div class="percent"></div>
+  </body>
+</html>
