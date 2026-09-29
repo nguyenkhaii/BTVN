@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        color: #333;
+        max-width: 500px;
+        margin: 30px auto;
+      }
+      h3 {
+        font-size: 24px;
+        font-weight: normal;
+      }
+      textarea,
+      input {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+      ::placeholder {
+        color: #888;
+      }
+      p {
+        color: red;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Textarea</h3>
+    <textarea
+      id="vanban"
+      maxlength="140"
+      placeholder="jQueryScript.Net"
+      oninput="onhap()"
+    ></textarea>
+    <p id="demvanban">Max 0 / 140</p>
+
+    <h3>Input Field</h3>
+    <input
+      id="onhap"
+      maxlength="20"
+      placeholder="jQueryScript.Net"
+      oninput="onhap2()"
+    />
+    <p id="demonhap2">Maximum 0 / 20</p>
+
+    <script>
+      function onhap() {
+        const oVanBan = document.querySelector("#vanban");
+        const dem = document.querySelector("#demvanban");
+        dem.textContent = "Max " + oVanBan.value.length + " / 140";
+      }
+
+      function onhap2() {
+        const oNhap = document.querySelector("#onhap");
+        const dem = document.querySelector("#demonhap2");
+        dem.textContent = "Maximum " + oNhap.value.length + " / 20";
+      }
+    </script>
+  </body>
+</html>
