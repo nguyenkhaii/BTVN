@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh sách đi chợ</title>
+    <style>
+      body {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 16px;
+        line-height: 1.6;
+      }
+
+      .khung {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 12px;
+      }
+
+      .khung input {
+        padding: 6px 8px;
+        width: 220px;
+        max-width: 100%;
+      }
+
+      #dsmon {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+      }
+
+      #dsmon li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      #dsmon li.damua {
+        text-decoration: line-through;
+        color: #999;
+      }
+
+      #chuamua {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="khung">
+      <form id="formmon">
+        <label for="tenmon">Món cần mua:</label>
+        <input type="text" id="tenmon" placeholder="VD: rau muống" />
+        <button type="submit">Thêm</button>
+      </form>
+      <ul id="dsmon"></ul>
+      <p id="chuamua"></p>
+    </div>
+
+    <script>
+      const formMon = document.querySelector("#formmon");
+      const oMon = document.querySelector("#tenmon");
+      const dsMon = document.querySelector("#dsmon");
+      const chuaMua = document.querySelector("#chuamua");
+
+      const hienThiDem = () => {
+        const tong = dsMon.children.length;
+        const daMua = dsMon.querySelectorAll("li.damua").length;
+        chuaMua.textContent = `Còn ${tong - daMua}/${tong} món chưa mua`;
+      };
+
+      formMon.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const tenMon = oMon.value.trim();
+        if (tenMon === "") return;
+
+        const dong = document.createElement("li");
+        dong.textContent = tenMon;
+
+        dong.addEventListener("click", () => {
+          dong.classList.toggle("damua");
+          hienThiDem();
+        });
+
+        dong.addEventListener("dblclick", () => {
+          dong.remove();
+          hienThiDem();
+        });
+
+        dsMon.append(dong);
+        hienThiDem();
+
+        oMon.value = "";
+        oMon.focus();
+      });
+
+      hienThiDem();
+    </script>
+  </body>
+</html>
